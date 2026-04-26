@@ -1,0 +1,24 @@
+<!-- 封样件评定页面 -->
+<div id="seal-evaluation-page">
+    <div class="page-header"><h2 class="page-title">封样件有效期与内部评定</h2></div>
+
+    <!-- 状态筛选Tab -->
+    <div class="tabs-container" id="eval-tabs">
+        <div class="tab-nav">
+            <div class="tab-item active" data-tab="all">全部</div>
+            <div class="tab-item" data-tab="pending_eval">待评定<span class="tag badge-warning" id="badge-pending">0</span></div>
+            <div class="tab-item" data-tab="expired">已过期<span class="tag danger-badge" id="badge-expired">0</span></div>
+            <div class="tab-item" data-tab="scrapped">已报废<span class="tag tag-default" id="badge-scrapped">0</span></div>
+        </div>
+        <div class="tab-panel active">
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr><th>序号</th><th>项目</th><th>封样件名称</th><th>有效期</th><th>剩余天数</th><th>上次评定结果</th><th>操作</th></tr></thead>
+                    <tbody id="eval-tbody"><tr><td colspan="7" class="empty-state"><p>加载中...</p></td></tr></tbody>
+                </table>
+                <div id="eval-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/seal-evaluation.js"></script>

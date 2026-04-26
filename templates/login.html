@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - 封样件及色板管理系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+<body>
+<div class="login-page">
+    <!-- 背景装饰 -->
+    <div class="login-bg-shapes">
+        <div class="login-shape shape-1"></div>
+        <div class="login-shape shape-2"></div>
+        <div class="login-shape shape-3"></div>
+        <div class="login-shape shape-4"></div>
+    </div>
+
+    <div class="login-card">
+        <!-- 品牌区 -->
+        <div class="login-brand">
+            <div class="login-logo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+            </div>
+            <h1 class="login-brand-name">封样件及色板管理系统</h1>
+            <p class="login-brand-subtitle">Seal &amp; Color Sample Management System</p>
+        </div>
+
+        <!-- 登录/注册 Tabs -->
+        <div class="login-tabs">
+            <button type="button" id="login-tab" class="login-tab active">登录</button>
+            <button type="button" id="register-tab" class="login-tab">注册</button>
+            <span class="login-tab-indicator" id="tab-indicator"></span>
+        </div>
+
+        <!-- 登录表单 -->
+        <form id="login-form" style="display:block;" class="login-form-inner" autocomplete="off">
+            <div class="login-field">
+                <label class="login-label">用户名</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    <input type="text" name="username" placeholder="请输入用户名" required autocomplete="username">
+                </div>
+            </div>
+            <div class="login-field">
+                <label class="login-label">密码</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    </span>
+                    <input type="password" name="password" placeholder="请输入密码" required autocomplete="current-password">
+                    <button type="button" class="pwd-toggle" aria-label="显示/隐藏密码">
+                        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="login-options-row">
+                <label class="login-checkbox">
+                    <input type="checkbox" checked>
+                    <span class="checkbox-custom"></span>
+                    记住我
+                </label>
+            </div>
+            <button type="submit" class="btn-login">
+                <span class="btn-text">登 录</span>
+                <span class="btn-loading"><svg class="spinner-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 100 20"/><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.6s" repeatCount="indefinite"/></svg></span>
+            </button>
+        </form>
+
+        <!-- 注册表单 -->
+        <form id="register-form" style="display:none;" class="login-form-inner" autocomplete="off">
+            <div class="login-field">
+                <label class="login-label">用户名</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </span>
+                    <input type="text" name="username" placeholder="用于登录" required autocomplete="new-username">
+                </div>
+            </div>
+            <div class="login-field">
+                <label class="login-label">真实姓名</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg>
+                    </span>
+                    <input type="text" name="realName" placeholder="真实姓名" required>
+                </div>
+            </div>
+            <div class="login-field">
+                <label class="login-label">密码</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    </span>
+                    <input type="password" name="password" placeholder="至少6位" minlength="6" required autocomplete="new-password">
+                    <button type="button" class="pwd-toggle" aria-label="显示/隐藏密码">
+                        <svg class="eye-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <svg class="eye-closed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17" style="display:none;"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="login-field">
+                <label class="login-label">确认密码</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <input type="password" name="confirmPassword" placeholder="再次输入密码" required autocomplete="new-password">
+                </div>
+            </div>
+            <div class="login-field">
+                <label class="login-label">邀请码</label>
+                <div class="login-input-wrap">
+                    <span class="field-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+                    </span>
+                    <input type="text" name="invitationCode" placeholder="请输入管理员提供的邀请码" required>
+                </div>
+            </div>
+            <button type="submit" class="btn-login">
+                <span class="btn-text">注 册</span>
+                <span class="btn-loading"><svg class="spinner-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2a10 10 0 100 20"/><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.6s" repeatCount="indefinite"/></svg></span>
+            </button>
+        </form>
+
+        <div class="login-footer">&copy; 2026 封样件及色板接收登记管理系统</div>
+        <div class="login-footer">干杯🍻 <a href="https://space.bilibili.com/36108381?spm_id_from=333.1007.0.0">个人主页</a></div>
+        <div class="login-footer"> E-Mail📧：<a href="mailto:1149487739@qq.com">1149487739@qq.com<div>
+    </div>
+</div>
+
+<script src="/static/js/api.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!-- 仪表盘首页 - 由 index.html 动态加载 -->
+<div id="dashboard-page">
+    <!-- 统计卡片 -->
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <!-- 双栏信息区 -->
+    <div class="dashboard-grid">
+        <!-- 近期到期预警 -->
+        <div class="card">
+            <div class="card-header">
+                <span>📋 近期到期预警</span>
+                <span style="font-size:12px;font-weight:normal;color:var(--text-muted);">最多显示10条</span>
+            </div>
+            <div class="table-wrapper" style="padding:0;overflow-x:auto;">
+                <table class="data-table" style="min-width:500px;">
+                    <thead><tr><th>序号</th><th>类型</th><th>名称</th><th>剩余天数</th><th>状态</th><th>操作</th></tr></thead>
+                    <tbody id="warnings-tbody"><tr><td colspan="6" class="empty-state"><p>加载中...</p></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 最近操作记录 -->
+        <div class="card">
+            <div class="card-header"><span>📝 最近操作记录</span></div>
+            <div style="padding:20px;">
+                <div class="timeline" id="timeline-list">
+                    <p style="color:var(--text-muted);padding-left:24px;">加载中...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/dashboard.js"></script>

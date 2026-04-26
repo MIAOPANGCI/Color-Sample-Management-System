@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>封样件及色板管理系统</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/components.css">
+    <link rel="stylesheet" href="/static/css/pages.css">
+</head>
+<body>
+<div class="sidebar-layout">
+    <!-- 左侧侧边栏 -->
+    <nav class="sidebar" id="sidebar-nav">
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">Color</div>
+            <span class="sidebar-brand-text">顾客封样、色板管理</span>
+        </div>
+
+        <div class="sidebar-nav">
+            <div class="nav-group-title">业务管理</div>
+            <div class="nav-item active" data-page="dashboard.html" onclick="loadSubPage('dashboard.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                <span>仪表盘</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="seal-sample.html" onclick="loadSubPage('seal-sample.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span>封样件台账</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="seal-evaluation.html" onclick="loadSubPage('seal-evaluation.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                <span>封样件评定</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="color-sample.html" onclick="loadSubPage('color-sample.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                <span>色板台账</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="send-record.html" onclick="loadSubPage('send-record.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                <span>寄出台账</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="color-evaluation.html" onclick="loadSubPage('color-evaluation.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                <span>色板评定</span>
+                <nav-dot></nav-dot>
+            </div>
+            <div class="nav-item" data-page="disposal-records.html" onclick="loadSubPage('disposal-records.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/><path d="M9 14l2 2 4-4"/></svg>
+                <span>处置记录</span>
+                <nav-dot></nav-dot>
+            </div>
+
+            <div class="nav-group-title" id="admin-section-title" style="display:none;">系统管理</div>
+            <div class="nav-item" data-page="admin-panel.html" id="admin-menu-item" style="display:none;" onclick="loadSubPage('admin-panel.html',this)">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span>管理后台</span>
+                <nav-dot></nav-dot>
+            </div>
+        </div>
+
+        <!-- 底部用户面板 -->
+        <div class="sidebar-footer">
+            <div class="user-card">
+                <div class="user-avatar" id="sidebar-avatar">A</div>
+                <div class="user-info">
+                    <div class="user-name" id="sidebar-username">Admin</div>
+                    <div class="user-role" id="sidebar-role">管理员</div>
+                </div>
+                <div class="user-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M15 18l-6-6 6-6"/></svg>
+                </div>
+            </div>
+            <!-- 展开的操作区 -->
+            <div class="user-expand-actions" id="user-expand-actions">
+                <button class="expand-action-btn" onclick="event.stopPropagation();showChangePasswordDialog('dialog')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    修改密码
+                </button>
+                <button class="expand-action-btn logout-btn" onclick="event.stopPropagation();doLogout()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="15" height="15"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16,17 21,12 16,7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    退出登录
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 右侧内容区 -->
+    <main class="main-content">
+        <header class="top-header">
+            <div class="breadcrumb-wrap">
+                <svg class="breadcrumb-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                <strong>首页</strong>
+                <span class="breadcrumb-sep">/</span>
+                <span id="breadcrumb-current" class="breadcrumb-current">仪表盘</span>
+            </div>
+            <div class="header-right">
+                <span class="header-time" id="header-clock"></span>
+            </div>
+        </header>
+        <div class="page-container" id="page-content"></div>
+    </main>
+</div>
+
+<!-- 全局JS -->
+<script src="/static/js/api.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/ui.js"></script>
+<script src="/static/js/password-change.js"></script>
+<script>
+// 检查登录状态 + 初始化
+(function(){
+    const token=localStorage.getItem('token');
+    const userStr=localStorage.getItem('user');
+    if(!token||!userStr){window.location.href='/login';return;}
+    
+    try{
+        const u=JSON.parse(userStr);
+        document.getElementById('sidebar-avatar').textContent=(u.real_name||u.username).charAt(0);
+        document.getElementById('sidebar-username').textContent=u.real_name||u.username;
+        document.getElementById('sidebar-role').textContent=u.is_admin?'管理员':'普通用户';
+        
+        // 管理员菜单可见性
+        if(u.is_admin){
+            document.getElementById('admin-section-title').style.display='';
+            document.getElementById('admin-menu-item').style.display='';
+        }
+        
+        if(u.must_change_password){
+            showChangePasswordDialog('force');
+            return;
+        }
+    }catch(e){window.location.href='/login';return;}
+
+    // 加载默认页面
+    loadSubPage('dashboard.html');
+})();
+
+function loadSubPage(page,navEl){
+    const container=document.getElementById('page-content');
+    container.innerHTML='<div class="loading-fullscreen"><div class="spinner"></div><div class="loading-text">加载中...</div></div>';
+
+    // 更新导航高亮
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    if(navEl)navEl.classList.add('active');
+
+    // 更新面包屑
+    const pageNames={'dashboard.html':'仪表盘','seal-sample.html':'封样件台账','seal-evaluation.html':'封样件评定',
+                      'color-sample.html':'色板台账','send-record.html':'寄出台账',
+                      'color-evaluation.html':'色板评定','scrap-list.html':'报废记录',
+                      'disposal-records.html':'处置记录','admin-panel.html':'管理后台'};
+    document.getElementById('breadcrumb-current').textContent=pageNames[page]||'页面';
+
+    fetch('/templates/'+page)
+        .then(r=>{if(!r.ok)throw new Error();return r.text();})
+        .then(html=>{
+            container.innerHTML=html;
+            // 1. 收集所有外部JS的src（按顺序）
+            const extScripts=Array.from(container.querySelectorAll('script[src]')).map(s=>s.src);
+            // 2. 执行内联脚本
+            const inlineScripts=container.querySelectorAll('script:not([src])');
+            inlineScripts.forEach(s=>{try{eval(s.textContent);}catch(e){console.error('Script error:',e);}});
+            // 3. 按序加载并执行外部JS，每个加载完成后触发DOMContentLoaded模拟初始化
+            let chain=Promise.resolve();
+            extScripts.forEach(src=>{
+                chain=chain.then(()=>new Promise((resolve)=>{
+                    const sc=document.createElement('script');
+                    sc.src=sc.originalSrc=src;
+                    sc.onload=()=>{
+                        window.dispatchEvent(new Event('subPageReady'));
+                        resolve();
+                    };
+                    sc.onerror=(e)=>{console.error('Load failed:',src,e);resolve();};
+                    document.body.appendChild(sc);
+                }));
+            });
+        })
+        .catch(err=>{
+            container.innerHTML=`<div class="empty-state"><p>页面加载失败</p><button class="btn btn-outline mt-16" onclick="loadSubPage('${page}')">重试</button></div>`;
+        });
+}
+
+function doLogout(){
+    const token=localStorage.getItem('token');
+    if(token){
+        fetch('/api/auth/logout',{method:'POST',headers:{'Authorization':'Bearer '+token}}).catch(()=>{});
+    }
+    localStorage.removeItem('token');localStorage.removeItem('user');
+    window.location.href='/login';
+}
+
+// 时钟
+function updateClock(){
+    const el=document.getElementById('header-clock');
+    if(el)el.textContent=new Date().toLocaleString('zh-CN',{hour12:false});
+}
+setInterval(updateClock,1000);updateClock();
+
+// 心跳：每2分钟ping一次保持在线状态
+setInterval(async()=>{
+    const token=localStorage.getItem('token');
+    if(token){
+        try{await fetch('/api/auth/ping',{headers:{'Authorization':'Bearer '+token}});}
+        catch(e){/* 静默 */ }
+    }
+},120000);
+
+// 用户卡片展开/收起操作菜单
+(function(){
+    const userCard=document.querySelector('.user-card');
+    const expandActions=document.getElementById('user-expand-actions');
+    if(!userCard||!expandActions)return;
+
+    userCard.addEventListener('click',()=>{
+        expandActions.classList.toggle('show');
+        userCard.classList.toggle('expanded');
+        // 箭头旋转
+        const arrow=userCard.querySelector('.user-arrow');
+        if(arrow)arrow.style.transform=expandActions.classList.contains('show')?'rotate(180deg)':'';
+    });
+
+    // 点击外部收起
+    document.addEventListener('click',(e)=>{
+        if(!e.target.closest('.sidebar-footer')){
+            expandActions.classList.remove('show');
+            userCard.classList.remove('expanded');
+            const arrow=userCard.querySelector('.user-arrow');
+            if(arrow)arrow.style.transform='';
+        }
+    });
+})();
+</script>
+</body>
+</html>

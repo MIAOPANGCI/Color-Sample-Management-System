@@ -1,0 +1,31 @@
+<!-- 寄出台账管理页面 -->
+<div id="send-record-page">
+    <div class="page-header"><h2 class="page-title">寄出台账</h2></div>
+
+    <!-- 动态筛选面板 -->
+    <div id="send-filter-toolbar"></div>
+
+    <div class="toolbar">
+        <div class="toolbar-left search-group">
+            <div id="send-tc-btns"></div>
+        </div>
+        <div class="toolbar-buttons">
+            <button class="btn btn-primary btn-sm" onclick="openSendForm()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新增寄出
+            </button>
+            <button class="btn btn-outline btn-sm" id="send-export-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>导出
+            </button>
+        </div>
+    </div>
+
+    <div class="data-table-wrapper">
+        <table class="data-table">
+            <thead id="send-thead"></thead>
+            <tbody id="send-tbody"><tr><td colspan="9" class="empty-state"><p>暂无寄出记录</p></td></tr></tbody>
+        </table>
+        <div id="send-pagination"></div>
+    </div>
+</div>
+<script src="/static/js/table-config.js"></script>
+<script src="/static/js/send-record.js"></script>
