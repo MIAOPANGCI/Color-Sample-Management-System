@@ -1,0 +1,37 @@
+<!-- 处置记录统一管理页面（评定记录 + 报废记录） -->
+<div id="disposal-records-page">
+    <div class="page-header">
+        <h2 class="page-title">处置记录</h2>
+        <div class="header-actions">
+            <button class="btn btn-outline btn-sm" onclick="exportDisposalRecords()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                导出
+            </button>
+        </div>
+    </div>
+
+    <!-- 动态筛选面板 -->
+    <div id="dr-filter-toolbar"></div>
+
+    <div class="toolbar">
+        <div class="toolbar-left search-group">
+            <div id="dr-tc-btns"></div>
+        </div>
+    </div>
+
+    <!-- 处置记录表 -->
+    <div class="data-table-wrapper">
+        <table class="data-table">
+            <thead id="dr-thead">
+                <tr>
+                    <th>记录类型</th><th>对象类型</th><th>编号</th><th>名称</th>
+                    <th>结果/原因</th><th>操作人</th><th>日期</th><th>详情</th><th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="dr-tbody"><tr><td colspan="9" class="empty-state"><p>加载中...</p></td></tr></tbody>
+        </table>
+        <div id="dr-pagination"></div>
+    </div>
+</div>
+<script src="/static/js/table-config.js"></script>
+<script src="/static/js/disposal-records.js"></script>

@@ -1,0 +1,42 @@
+<!-- 色板台账管理页面 (28字段) -->
+<div id="color-sample-page">
+    <div class="page-header">
+        <div class="toolbar-title-group">
+            <h2 class="page-title">色板台账</h2>
+            <span class="page-subtitle" id="color-total-count"></span>
+        </div>
+    </div>
+
+    <!-- 动态筛选面板 -->
+    <div id="color-filter-toolbar"></div>
+
+    <div class="toolbar">
+        <div class="toolbar-left search-group">
+            <div id="color-tc-btns"></div>
+        </div>
+        <div class="toolbar-buttons">
+            <button class="btn btn-primary btn-sm" onclick="newColorSample()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>新增
+            </button>
+            <label class="btn btn-outline btn-sm" style="cursor:pointer;margin:0;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17,8 12,3 7,8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>导入
+                <input type="file" id="color-import-btn" accept=".xlsx,.xls" class="file-hidden">
+            </label>
+            <button class="btn btn-outline btn-sm" id="color-export-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>导出
+            </button>
+        </div>
+    </div>
+
+    <!-- 主数据表 (动态列 + 行展开) -->
+    <div class="data-table-wrapper">
+        <table class="data-table">
+            <thead id="color-thead"></thead>
+            <tbody id="color-tbody"><tr><td colspan="13" class="empty-state"><p>加载中...</p></td></tr></tbody>
+        </table>
+        <div id="color-pagination"></div>
+    </div>
+</div>
+<script src="/static/js/table-config.js"></script>
+<script src="/static/js/color-evaluation.js"></script>
+<script src="/static/js/color-sample.js"></script>

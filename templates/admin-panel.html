@@ -1,0 +1,106 @@
+<!-- 管理后台页面 (用户管理 + 邀请码管理 + 系统设置) -->
+<div id="admin-panel-page">
+    <div class="page-header"><h2 class="page-title">管理后台</h2></div>
+
+    <div class="tabs-container admin-tabs" id="admin-tabs">
+        <div class="tab-nav">
+            <div class="tab-item active" data-tab="users">用户管理</div>
+            <div class="tab-item" data-tab="invitations">邀请码管理</div>
+            <div class="tab-item" data-tab="settings">系统设置</div>
+        </div>
+
+        <!-- Tab1: 用户管理 -->
+        <div class="tab-panel active admin-tab-content" id="panel-users">
+            <div class="toolbar">
+                <div class="toolbar-left search-group">
+                    <input type="text" id="admin-user-search" class="form-input" placeholder="搜索用户名/姓名..." style="width:200px;">
+                    <button class="btn btn-primary btn-sm" id="admin-user-search-btn">搜索</button>
+                </div>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr>
+                        <th width="48">头像</th><th>用户名</th><th>真实姓名</th><th>角色</th>
+                        <th>状态</th><th>在线</th><th>注册时间</th><th>邀请码来源</th><th>操作</th>
+                    </tr></thead>
+                    <tbody id="admin-users-tbody"><tr><td colspan="9" class="empty-state"><p>加载中...</p></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab2: 邀请码管理 -->
+        <div class="tab-panel admin-tab-content" id="panel-invitations">
+            <div class="toolbar">
+                <div style="flex:1;"></div>
+                <button class="btn btn-primary btn-sm" onclick="openGenerateInviteDialog()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    生成新邀请码
+                </button>
+            </div>
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr>
+                        <th>邀请码</th><th>备注</th><th>最大次数</th><th>已使用</th><th>剩余</th>
+                        <th>过期时间</th><th>状态</th><th>创建时间</th><th>操作</th>
+                    </tr></thead>
+                    <tbody id="invitations-tbody"><tr><td colspan="9" class="empty-state"><p>加载中...</p></td></tr></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab3: 系统设置 (ΔE阈值) -->
+        <div class="tab-panel admin-tab-content" id="panel-settings">
+            <div style="max-width:800px;">
+                <p style="font-size:13px;color:var(--text-secondary);margin-bottom:20px;">
+                    ⚙️ 以下设置影响色板评定时ΔE值的颜色标识和等级判断。修改后立即生效。
+                </p>
+                
+                <div class="card settings-form-card">
+                    <h3 style="font-size:15px;font-weight:600;color:var(--text-primary);margin-bottom:6px;display:flex;align-items:center;gap:6px;">
+                        ΔE色差阈值配置
+                        <span title="CIE76公式：ΔE = √[(L-L₀)² + (a-a₀)² + (b-b₀)²]" style="cursor:help;">ℹ️</span>
+                    </h3>
+                    <p style="font-size:12.5px;color:var(--text-muted);margin-bottom:18px;">基于 CIE76 标准的 Lab 色差计算公式，可自定义三个等级的阈值边界</p>
+
+                    <div class="setting-row">
+                        <label class="setting-label">优秀阈值 (ΔE &lt; ?)</label>
+                        <input type="number" id="setting-excellent" class="setting-input" step="0.1" min="0" value="1.0">
+                        <div class="setting-preview">
+                            <span class="tag tag-success" style="border:none;background:#e6f7ef;color:#007a52;">优秀</span>
+                            <small style="color:var(--text-muted);">低于此值的色差显示为绿色"优秀"</small>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <label class="setting-label">合格阈值 (? ≤ ΔE &lt; ?)</label>
+                        <input type="number" id="setting-good" class="setting-input" step="0.1" min="0" value="2.0">
+                        <div class="setting-preview">
+                            <span class="tag tag-warning" style="border:none;background:#fff7e6;color:#b35400;">合格</span>
+                            <small style="color:var(--text-muted);">介于优秀阈值和此值之间显示为黄色"合格"</small>
+                        </div>
+                    </div>
+                    <div class="setting-row">
+                        <label class="setting-label">需关注阈值 (ΔE ≥ ?)</label>
+                        <input type="number" id="setting-warning" class="setting-input" step="0.1" min="0" value="999.0">
+                        <div class="setting-preview">
+                            <span class="tag tag-danger" style="border:none;background:#fef2f2;color:#b33a44;">需关注</span>
+                            <small style="color:var(--text-muted);">超过合格阈值的显示为红色"需关注"(建议设较大值或不限制)</small>
+                        </div>
+                    </div>
+
+                    <!-- 实时预览区 -->
+                    <div class="settings-preview-area" id="settings-preview-area">
+                        <div style="font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:10px;">📊 效果预览（模拟不同ΔE值）</div>
+                    </div>
+                    <div id="thresholds-ref-text" style="text-align:center;font-size:12px;color:var(--text-muted);margin-top:10px;"></div>
+
+                    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:22px;padding-top:18px;border-top:1px solid var(--border-light);">
+                        <button class="btn btn-ghost" id="reset-settings-btn">重置默认</button>
+                        <button class="btn btn-primary" id="save-settings-btn">保存设置</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/admin-management.js"></script>
+<script src="/static/js/system-settings.js"></script>

@@ -1,0 +1,27 @@
+<!-- 色板评定核心页面 (ΔE实时计算) -->
+<div id="color-evaluation-page">
+    <div class="page-header"><h2 class="page-title">色板有效期与评定</h2></div>
+
+    <!-- 状态筛选Tab -->
+    <div class="tabs-container" id="ceval-tabs">
+        <div class="tab-nav">
+            <div class="tab-item active" data-tab="all">全部</div>
+            <div class="tab-item" data-tab="pending_eval">待评定<span class="tag badge-warning" id="ceval-badge-pending">0</span></div>
+            <div class="tab-item" data-tab="expired">已过期<span class="tag danger-badge" id="ceval-badge-expired">0</span></div>
+            <div class="tab-item" data-tab="scrapped">已报废<span class="tag tag-default" id="ceval-badge-scrapped">0</span></div>
+        </div>
+        <div class="tab-panel active">
+            <div class="data-table-wrapper">
+                <table class="data-table">
+                    <thead><tr>
+                        <th>序号</th><th>客户</th><th>颜色名称</th><th>样板供应商</th>
+                        <th>有效期</th><th>剩余天数</th><th>最新ΔE值</th><th>上次评定结果</th><th>操作</th>
+                    </tr></thead>
+                    <tbody id="ceval-tbody"><tr><td colspan="9" class="empty-state"><p>加载中...</p></td></tr></tbody>
+                </table>
+                <div id="ceval-pagination"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/js/color-evaluation.js"></script>
