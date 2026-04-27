@@ -1117,7 +1117,7 @@ def create_send_record():
             return jsonify({'success': False, 'message': f'{f}为必填项'}), 400
     
     db = get_db()
-    sample = db.execute("SELECT id, 颜色名称, 当前持有数量 FROM seal_color_samples WHERE id=? AND 状态='normal'", 
+    sample = db.execute("SELECT id, 客户, 颜色名称, 当前持有数量 FROM seal_color_samples WHERE id=? AND 状态='normal'", 
                         (data['sample_id'],)).fetchone()
     if not sample:
         return jsonify({'success': False, 'message': '关联的色板不存在或已过期，不可操作。'}), 404
@@ -1131,7 +1131,7 @@ def create_send_record():
     cursor = db.cursor()
     cursor.execute("""INSERT INTO seal_send_records (sample_id, 客户, 颜色名称, 对方单位, 寄出数量, 寄出日期, 经手人, 备注)
                       VALUES (?, ?, ?, ?, ?, ?, ?, ?)""",
-                   (data['sample_id'], data.get('客户', ''), sample_dict['颜色名称'],
+                   (data['sample_id'], sample_dict.get('客户', ''), sample_dict['颜色名称'],
                     data['对方单位'], send_qty, data['寄出日期'], data.get('经手人', ''), data.get('备注', '')))
     # 扣减库存
     cursor.execute("UPDATE seal_color_samples SET 当前持有数量=当前持有数量-? WHERE id=?",
